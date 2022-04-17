@@ -2,21 +2,21 @@
 - [中文版](./README_CN.md)
 
 The SU03-T offline voice module supports voice recognition and number synthesis.
-This library is used for serial communication between Arduino and SU03-T.
+This library is used for serial(and I2C) communication between Arduino and SU03-T.
 
 
 
-![Product Image](./resources/images/dfr0760.png)
+![Product Image](./resources/images/SU03T.png)
 
 ## Product Link (https://www.dfrobot.com)
- SKU:****
+ SKU: DFR0987
 
 ## Table of Contents
 
 * [Summary](#summary)
 * [Installation](#installation)
 * [Methods](#methods)
-* [Compatibility](#compatibility)  
+* [Compatibility](#compatibility)
 * [History](#history)
 * [Credits](#credits)
 
@@ -35,18 +35,16 @@ To use this library, first download the library file, paste it into the \Arduino
   /**
    * @fn begin
    * @brief Init communication port
-   * @param Software serial or hardware serial 
    * @return true or false
    */
-  bool begin(Stream &s_);
+  virtual bool begin(void);
 
   /**
    * @fn readEntryID
    * @brief Read the ID corresponding to the entry recognized by the voice recognition module
-   * @param timeout timeout detection
    * @return  ID
    */
-  uint16_t readEntryID(int timeout);
+  uint16_t readEntryID(void);
   
   /**
    * @fn sendInfo
@@ -92,7 +90,7 @@ To use this library, first download the library file, paste it into the \Arduino
    * @n (...) represents changeable parameter, i.e. the answer requires multiple parameters.
    * @return 0 for success
    */
-  uint8_t send(uint8_t id,char *s,...);
+  uint8_t send(uint8_t id, char *s, ...);
 ```
 
 ## Compatibility
@@ -112,9 +110,9 @@ M0        |      √       |              |             |
 ## History
 
 
-- 2022/3/10 - Version 1.0.0 released.
+- 2022/04/14 - Version 1.0.0 released.
 
 
 ## Credits
 
-Written by fengli(li.feng@dfrobot.com), 2022.03.10 (Welcome to our [website](https://www.dfrobot.com/))
+Written by fengli(li.feng@dfrobot.com), 2022. (Welcome to our [website](https://www.dfrobot.com/))

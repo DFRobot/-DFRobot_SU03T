@@ -2,14 +2,14 @@
 - [English Version](./README.md)
 
 SU03-T是一款离线语音模组，支持语音识别和数字的合成。
-本库用于arduino主控与SU03-T之间的串口通讯。
+本库用于arduino主控与SU03-T之间的串口以及I2C通讯。
 
 
 
-![产品效果图片](./resources/images/dfr0760.png)
+![产品效果图片](./resources/images/SU03T.png)
 
 ## 产品链接 (https://www.dfrobot.com.cn)
- SKU:****
+ SKU: DFR0987
 
 ## Table of Contents
 
@@ -35,18 +35,16 @@ SU03-T是一款离线语音模组，支持语音识别和数字的合成。
   /**
    * @fn begin
    * @brief Init communication port
-   * @param Software serial or hardware serial 
-   * @return true or false
+   * @return true
    */
-  bool begin(Stream &s_);
+  virtual bool begin(void);
 
   /**
    * @fn readEntryID
    * @brief 读取语音识别模块识别到的词条对应的ID
-   * @param timeout 超时检测
    * @return  ID
    */
-  uint16_t readEntryID(int timeout);
+  uint16_t readEntryID(void);
   
   /**
    * @fn sendInfo
@@ -92,7 +90,7 @@ SU03-T是一款离线语音模组，支持语音识别和数字的合成。
    * @n (...)表示可变参数,即答案需要多个参数
    * @return 0表示成功
    */
-  uint8_t send(uint8_t id,char *s,...);
+  uint8_t send(uint8_t id, char *s, ...);
 ```
 
 ## 兼容性
@@ -111,8 +109,8 @@ M0        |      √       |              |             |
 
 ## 历史
 
-- 2022/03/10 - 1.0.0 版本
+- 2022/04/14 - 1.0.0 版本
 
 ## 创作者
 
-Written by fengli(li.feng@dfrobot.com), 2022.03.10 (Welcome to our [website](https://www.dfrobot.com/))
+Written by fengli(li.feng@dfrobot.com), 2022. (Welcome to our [website](https://www.dfrobot.com/))

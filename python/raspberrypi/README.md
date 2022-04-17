@@ -1,14 +1,13 @@
 ## DFRobot_SU03T
 - [中文版](./README_CN.md)
 
-The SU03-T offline voice module supports voice recognition and number synthesis. This library is used for serial communication between Arduino and SU03-T.
+The SU03-T offline voice module supports voice recognition and number synthesis. This library is used for serial(and I2C) communication between Arduino and SU03-T.
 
 
-![正反面svg效果图](../../resources/images/dfr0760.png)
+![正反面svg效果图](../../resources/images/SU03T.png)
 
 ## Product Link（https://www.dfrobot.com/）
-
-  SKU:****
+  SKU: DFR0987
 
 ## Table of Contents
 
@@ -77,4 +76,4 @@ smart_voice.py
 - 2022/3/11 - Version 1.0.0 released.
 ## Credits
 
-Written by fengli(li.feng@dfrobot.com), 2022.3.11 (Welcome to our [website](https://www.dfrobot.com/))
+Written by fengli(li.feng@dfrobot.com), 2022. (Welcome to our [website](https://www.dfrobot.com/))

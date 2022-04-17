@@ -12,23 +12,24 @@
   @date  2022-03-09
   @url https://github.com/DFRobot/DFRobot_SU03T
 '''
-import sys
+import sys, os
 sys.path.append("../")
+sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))   # 包含库文件所在路径
 from DFRobot_SU03T import *
+
 #Construct device
-#Baud rate is 9600
-su03t = DFRobot_SU03T(9600)
+su03t = DFRobot_SU03T_UART()   # UART PORT
+# su03t = DFRobot_SU03T_I2C()   # I2C PORT
 
 print("Start to recognize")
 
 while True:
 
-   time.sleep(0.01)
-   id = su03t.read_entry_ID(timeout = 1) #Read the ID recognized by the voice module
-   if id != 0xffee:
-      print("id =")
-      print(id)
-   if id == 1:
-     su03t.send(id,25.5)
-   elif id == 13:
-     su03t.send(id,2022,chr(3),chr(11))
+  time.sleep(0.01)
+  id = su03t.read_entry_ID()   #Read the ID recognized by the voice module
+  if id != 0xffff:   # Invalid ID
+    print("id = %d" % id)
+  if id == 1:
+    su03t.send(id,25.5)
+  elif id == 13:
+    su03t.send(id,2022,chr(3),chr(11))

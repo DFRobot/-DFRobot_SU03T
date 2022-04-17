@@ -1,5 +1,5 @@
 /*!
- * @file smartVoice.ino
+ * @file smartVoiceUart.ino
  * @brief Get the information recognized by the voice module and control the module to speak.
  * @details When the voice module recognized the information, a data packet will be sent from serial port, and the main controller will parse the data packet 
  * @n to get the recognized data and then send data through serial port to control the voice module to speak according to the recognized data.
@@ -22,38 +22,43 @@
 #define ASKAIRQUALITY           6 ///<Query air quality
 #define ASKPARTICLECONCENTR     7 ///<Query PM concentration
 #define ASKNOISEINTENSITY       8 ///<Query noise intensity
-#define ASKHLIGHTINTENSITY     9 ///<Query light intensity
+#define ASKHLIGHTINTENSITY      9 ///<Query light intensity
 #define ASKUVRAYS              10 ///<Query UV intensity
 #define ASKSOILMOISTURE        11 ///<Query soil moisture
 #define ASKCURRENTTIME         12 ///<Query the current time
 #define ASKCURRENTDATE         13 ///<Query the current date
 
-#if ((defined ARDUINO_AVR_UNO) || (defined ARDUINO_AVR_NANO))
+#if (defined(ARDUINO_AVR_UNO) || defined(ESP8266))   // Using a soft serial port
     #include <SoftwareSerial.h>
-    SoftwareSerial Serial1(2, 3);  //RX, TX
-    #define FPSerial Serial1
-
+    SoftwareSerial softSerial(/*rx =*/4, /*tx =*/5);
+    #define FPSerial softSerial
 #else
     #define FPSerial Serial1
 #endif
+
 //Construct the voice control device
-DFRobot_SU03T su03t;
+DFRobot_SU03T_UART su03t;
+
 void setup(void)
 {
   Serial.begin(115200);
   #if (defined ESP32)
-  Serial1.begin(9600, SERIAL_8N1, /*rx =*/P11, /*tx =*/P12);
+  FPSerial.begin(9600, SERIAL_8N1, /*rx =*/D3, /*tx =*/D2);
   #else
-  Serial1.begin(9600);
+  FPSerial.begin(9600);
   #endif
-  
-  su03t.begin(Serial1);
+  su03t.begin(FPSerial);
 
 }
 
 void loop(void){
   
-  uint8_t id = su03t.readEntryID(/*timeout detection*/1000);
+  uint16_t id = su03t.readEntryID();
+  if(0xFFFF != id){
+    Serial.print("id = ");
+    Serial.println(id);
+  }
+
   switch(id){
   
    case ASKTEMPERATURE:

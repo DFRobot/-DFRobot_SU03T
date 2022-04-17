@@ -1,13 +1,13 @@
 ## DFRobot_SU03T
 - [English Version](./README.md)
 
-SU03-T是一款离线语音模组，支持语音识别和数字的合成。本库用于arduino主控与SU03-T之间的串口通讯。
+SU03-T是一款离线语音模组，支持语音识别和数字的合成。本库用于arduino主控与SU03-T之间的串口和I2C通讯。
 
-![正反面svg效果图](../../resources/images/dfr0760.png)
+![正反面svg效果图](../../resources/images/SU03T.png)
 
 
 ## 产品链接（https://www.dfrobot.com.cn/）
-    SKU:****
+    SKU: DFR0987
 
 ## 目录
 
@@ -79,4 +79,4 @@ smart_voice.py
 
 ## Credits
 
-Written by fengli(li.feng@dfrobot.com), 2022.3.11 (Welcome to our [website](https://www.dfrobot.com/))
+Written by fengli(li.feng@dfrobot.com), 2022. (Welcome to our [website](https://www.dfrobot.com/))
