@@ -40,6 +40,16 @@ To use this library, first download the library file, paste it into the \Arduino
   virtual bool begin(void);
 
   /**
+   * @fn autoExitWakeup
+   * @brief Set whether to automatically exit the wakeup state. By default, the
+   * @n system automatically exits the wakeup state in 10 seconds.
+   * @param mode - true : Automatically exits the wake up state;
+   * @n            false : Do not exit the wake up state
+   * @return None
+   */
+  void autoExitWakeup(bool mode);
+
+  /**
    * @fn readEntryID
    * @brief Read the ID corresponding to the entry recognized by the voice recognition module
    * @return  ID

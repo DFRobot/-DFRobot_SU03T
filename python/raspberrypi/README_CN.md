@@ -36,6 +36,13 @@ smart_voice.py
 
 ```python
 
+  def auto_exit_wakeup(self, mode):
+    '''!
+      @fn auto_exit_wakeup
+      @brief 设置是否自动退出唤醒状态, 默认10秒后自动退出唤醒状态
+      @param mode - True : 自动退出唤醒状态; False : 不用退出唤醒状态
+    '''
+
   def read_entry_ID(self ,timeout):
     '''!
       @fn read_entry_ID

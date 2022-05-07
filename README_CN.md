@@ -40,6 +40,14 @@ SU03-T是一款离线语音模组，支持语音识别和数字的合成。
   virtual bool begin(void);
 
   /**
+   * @fn autoExitWakeup
+   * @brief 设置是否自动退出唤醒状态, 默认10秒后自动退出唤醒状态
+   * @param mode - true : 自动退出唤醒状态; false : 不用退出唤醒状态
+   * @return None
+   */
+  void autoExitWakeup(bool mode);
+
+  /**
    * @fn readEntryID
    * @brief 读取语音识别模块识别到的词条对应的ID
    * @return  ID

@@ -49,6 +49,14 @@ void setup(void)
   #endif
   su03t.begin(FPSerial);
 
+  /**
+   * @brief Set whether to automatically exit the wakeup state. By default, the
+   * @n system automatically exits the wakeup state in 10 seconds.
+   * @param mode - true : Automatically exits the wake up state;
+   * @n            false : Do not exit the wake up state
+   */
+  su03t.autoExitWakeup(true);
+
 }
 
 void loop(void){

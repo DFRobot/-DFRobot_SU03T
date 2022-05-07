@@ -25,6 +25,8 @@
 #define DBG(...)
 #endif
 
+#define SU03T_AUTO_EXIT_WAKEUP_ID   uint8_t(0xE0)
+
 #define SU03T_DEFAULT_I2C_ADDR      uint8_t(0x34)
 
 #define SU03T_MODULE_ID_REG         uint8_t(0x00)
@@ -79,6 +81,16 @@ public:
    * @return true
    */
   virtual bool begin();
+
+  /**
+   * @fn autoExitWakeup
+   * @brief Set whether to automatically exit the wakeup state. By default, the
+   * @n system automatically exits the wakeup state in 10 seconds.
+   * @param mode - true : Automatically exits the wake up state;
+   * @n            false : Do not exit the wake up state
+   * @return None
+   */
+  void autoExitWakeup(bool mode);
 
   /**
    * @fn readEntryID

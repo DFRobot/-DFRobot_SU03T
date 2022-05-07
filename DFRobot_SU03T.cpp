@@ -27,6 +27,21 @@ uint16_t DFRobot_SU03T::readEntryID()
   return readID();
 }
 
+void DFRobot_SU03T::autoExitWakeup(bool mode)
+{
+  uint8_t *sendPack  = pack(SU03T_AUTO_EXIT_WAKEUP_ID, 6);
+
+  uint8_t id = 0;
+  if(mode) {
+    sendPack[3] = 0;
+  } else {
+    sendPack[3] = 1;
+  }
+
+  writeData(sendPack,6);
+  free(sendPack);
+}
+
 uint8_t DFRobot_SU03T::sendInfo(uint8_t id,char data){
   uint8_t *sendPack  = pack(id,6);
   uHexDouble_t conver ;

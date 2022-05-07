@@ -23,6 +23,15 @@ su03t = DFRobot_SU03T_UART()   # UART PORT
 
 print("Start to recognize")
 
+'''!
+  @fn auto_exit_wakeup
+  @brief Set whether to automatically exit the wakeup state. By default, the
+  @n system automatically exits the wakeup state in 10 seconds.
+  @param mode - True : Automatically exits the wake up state;
+  @n            False : Do not exit the wake up state
+'''
+su03t.auto_exit_wakeup(True)
+
 while True:
 
   time.sleep(0.01)

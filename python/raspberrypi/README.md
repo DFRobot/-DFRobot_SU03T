@@ -36,6 +36,15 @@ smart_voice.py
 
 ```python
 
+  def auto_exit_wakeup(self, mode):
+    '''!
+      @fn auto_exit_wakeup
+      @brief Set whether to automatically exit the wakeup state. By default, the
+      @n system automatically exits the wakeup state in 10 seconds.
+      @param mode - True : Automatically exits the wake up state;
+      @n            False : Do not exit the wake up state
+    '''
+
   def read_entry_ID(self ,timeout):
     '''!
       @fn read_entry_ID
