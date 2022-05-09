@@ -1,5 +1,4 @@
-# coding=utf8
-
+# -*- coding: utf-8 -*
 '''!
   @file smart_voice.py
   @brief Get the information recognized by the voice module and control the module to speak.
