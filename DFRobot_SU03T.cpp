@@ -112,24 +112,24 @@ uint8_t DFRobot_SU03T::sendInfo(uint8_t id,double data){
 uint8_t * DFRobot_SU03T::pack(uint8_t id ,uint8_t length)
 {
 
-   uint8_t * data = (uint8_t *)malloc(sizeof(uint8_t)*length);
-   memset(data,0,sizeof(data));
-   data[0] = 0xaa;
-   data[1] = 0x55;
-   data[length-1] = 0xaa;
-   data[length-2] = 0x55;
-   data[2] = id;
-   
-   return data;
+  uint8_t * data = (uint8_t *)malloc(sizeof(uint8_t) * length);
+  memset(data, 0, sizeof(uint8_t) * length);
+  data[0] = 0xaa;
+  data[1] = 0x55;
+  data[length-1] = 0xaa;
+  data[length-2] = 0x55;
+  data[2] = id;
+
+  return data;
 }
 
 uint8_t DFRobot_SU03T::sendInfo(uint8_t id,unsigned char data)
 {
-  uint8_t *sendPack  = pack(id,6);
+  uint8_t * sendPack  = pack(id,6);
   uHexDouble_t conver ;
   memset(conver.bnum,0,8);
   conver.uchar_num = data;
-  sendPack[3] = conver.bnum[0]  ;
+  sendPack[3] = conver.bnum[0];
   
   writeData(sendPack,6);
   free(sendPack);
